@@ -19,5 +19,8 @@ const userSchema = new mongoose.Schema({
 },{timestamps:true});
 
 const User = mongoose.model('User', userSchema);
+<<<<<<< HEAD
 
 export default User ;
+=======
+>>>>>>> 0bafcd5 (Add user model schema with validation for username, email, and password)
