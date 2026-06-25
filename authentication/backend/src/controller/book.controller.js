@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import Book from '../model/book.model.js';
+=======
+import Book from '../models/book.model.js';
+>>>>>>> 3abe013 (Add book model and controller with CRUD operations)
 
 const addBook = async (req, res) => {
     const { title, author, publishedDate, price } = req.body;
@@ -75,6 +79,7 @@ const getAllBooks = async (req, res) => {
 
 }
 
+<<<<<<< HEAD
 
 export  {
     addBook,
@@ -82,3 +87,5 @@ export  {
     deleteBook,
     getAllBooks
 }
+=======
+>>>>>>> 3abe013 (Add book model and controller with CRUD operations)

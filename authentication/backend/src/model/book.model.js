@@ -17,10 +17,13 @@ const bookSchema = new mongoose.Schema({
         type : Number ,
         required : true
     },
+<<<<<<< HEAD
     user : {
         type : mongoose.Schema.Types.ObjectId ,
         ref : 'User'
     }
+=======
+>>>>>>> 3abe013 (Add book model and controller with CRUD operations)
 },{
     timestamps : true
 })
