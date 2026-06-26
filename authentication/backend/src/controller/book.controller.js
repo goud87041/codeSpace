@@ -75,3 +75,10 @@ const getAllBooks = async (req, res) => {
 
 }
 
+
+export default {
+    addBook,
+    editBook,
+    deleteBook,
+    getAllBooks
+}
