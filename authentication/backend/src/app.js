@@ -1,8 +1,14 @@
 import express from 'express';
 import cors from 'cors';
+<<<<<<< HEAD
 import userRoute from "./routes/user.route.js"
 import bookRoute from "./routes/book.route.js"
 import healthRoute from "./routes/health.route.js"
+=======
+import {userRoute} from "./routes/user.route"
+import {bookRoute} from "./routes/book.route"
+
+>>>>>>> 6198316 (Implement user and book routes with JWT authentication; add user registration and login functionality)
 
 const app = express();
 
@@ -16,7 +22,10 @@ app.get('/', (req, res) => {
 
 app.use("/api/user", userRoute);
 app.use("/api/Book" , bookRoute);
+<<<<<<< HEAD
 app.use("/api/health", healthRoute)
+=======
+>>>>>>> 6198316 (Implement user and book routes with JWT authentication; add user registration and login functionality)
 
 
 

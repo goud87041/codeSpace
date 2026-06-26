@@ -80,12 +80,20 @@ const getAllBooks = async (req, res) => {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 export  {
+=======
+
+export default {
+>>>>>>> 6198316 (Implement user and book routes with JWT authentication; add user registration and login functionality)
     addBook,
     editBook,
     deleteBook,
     getAllBooks
 }
+<<<<<<< HEAD
 =======
 >>>>>>> 3abe013 (Add book model and controller with CRUD operations)
+=======
+>>>>>>> 6198316 (Implement user and book routes with JWT authentication; add user registration and login functionality)

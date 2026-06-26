@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import User from '../model/user.model.js';
+=======
+import User from '../models/user.model.js';
+>>>>>>> 6198316 (Implement user and book routes with JWT authentication; add user registration and login functionality)
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -49,7 +53,11 @@ const getUserProfile = async (req, res) => {
     }
 };
 
+<<<<<<< HEAD
 export  { registerUser, userLogin, getUserProfile };
+=======
+export { registerUser, userLogin, getUserProfile };
+>>>>>>> 6198316 (Implement user and book routes with JWT authentication; add user registration and login functionality)
 
 
 
