@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Book from '../model/book.model.js';
 =======
 import Book from '../models/book.model.js';
 >>>>>>> 3abe013 (Add book model and controller with CRUD operations)
+=======
+import Book from '../model/book.model.js';
+>>>>>>> 20a69a4 (Fix import paths in controllers and routes; update to use .js extension)
 
 const addBook = async (req, res) => {
     const { title, author, publishedDate, price } = req.body;
@@ -85,8 +89,12 @@ const getAllBooks = async (req, res) => {
 export  {
 =======
 
+<<<<<<< HEAD
 export default {
 >>>>>>> 6198316 (Implement user and book routes with JWT authentication; add user registration and login functionality)
+=======
+export  {
+>>>>>>> 20a69a4 (Fix import paths in controllers and routes; update to use .js extension)
     addBook,
     editBook,
     deleteBook,

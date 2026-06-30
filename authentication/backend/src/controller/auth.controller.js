@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import User from '../model/user.model.js';
 =======
 import User from '../models/user.model.js';
 >>>>>>> 6198316 (Implement user and book routes with JWT authentication; add user registration and login functionality)
+=======
+import User from '../model/user.model.js';
+>>>>>>> 20a69a4 (Fix import paths in controllers and routes; update to use .js extension)
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -54,10 +58,14 @@ const getUserProfile = async (req, res) => {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export  { registerUser, userLogin, getUserProfile };
 =======
 export { registerUser, userLogin, getUserProfile };
 >>>>>>> 6198316 (Implement user and book routes with JWT authentication; add user registration and login functionality)
+=======
+export  { registerUser, userLogin, getUserProfile };
+>>>>>>> 20a69a4 (Fix import paths in controllers and routes; update to use .js extension)
 
 
 
