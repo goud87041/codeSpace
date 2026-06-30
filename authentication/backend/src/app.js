@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import userRoute from "./routes/user.route.js"
 import bookRoute from "./routes/book.route.js"
-
+import healthRoute from "./routes/health.route.js"
 
 const app = express();
 
@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
 
 app.use("/api/user", userRoute);
 app.use("/api/Book" , bookRoute);
+app.use("/api/health", healthRoute)
 
 
 
