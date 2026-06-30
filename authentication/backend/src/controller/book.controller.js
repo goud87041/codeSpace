@@ -1,4 +1,4 @@
-import Book from '../models/book.model.js';
+import Book from '../model/book.model.js';
 
 const addBook = async (req, res) => {
     const { title, author, publishedDate, price } = req.body;
@@ -76,7 +76,7 @@ const getAllBooks = async (req, res) => {
 }
 
 
-export default {
+export  {
     addBook,
     editBook,
     deleteBook,

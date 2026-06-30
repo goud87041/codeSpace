@@ -1,9 +1,11 @@
-import { JsonWebTokenError } from "jsonwebtoken";
-import { userLogin ,registerUser, getUserProfile} from "../controller/auth.controller";
-import JWT_MID from "../middlewere/JWT.middlewere";
+// import { JsonWebTokenError } from "jsonwebtoken";
+import { Router } from "express";
+import { userLogin ,registerUser, getUserProfile} from "../controller/auth.controller.js";
+import JWT_MID from "../middlewere/JWT.middlewere.js";
+ 
 
 
-const router = router();
+const router = Router();
 
 router.route('/register').post(registerUser);
 

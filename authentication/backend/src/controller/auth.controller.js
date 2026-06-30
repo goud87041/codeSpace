@@ -1,4 +1,4 @@
-import User from '../models/user.model.js';
+import User from '../model/user.model.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -49,7 +49,7 @@ const getUserProfile = async (req, res) => {
     }
 };
 
-export { registerUser, userLogin, getUserProfile };
+export  { registerUser, userLogin, getUserProfile };
 
 
 

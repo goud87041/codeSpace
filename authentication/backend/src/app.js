@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import {userRoute} from "./routes/user.route"
-import {bookRoute} from "./routes/book.route"
+import userRoute from "./routes/user.route.js"
+import bookRoute from "./routes/book.route.js"
 
 
 const app = express();
