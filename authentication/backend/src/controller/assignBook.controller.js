@@ -1,4 +1,4 @@
-
+import {User} from "../model/user.model.js"
 
 const assignToUser = async (req, res) => {
     try{
