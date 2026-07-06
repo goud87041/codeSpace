@@ -1,107 +1,105 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-import Book from '../model/book.model.js';
-=======
-import Book from '../models/book.model.js';
->>>>>>> 3abe013 (Add book model and controller with CRUD operations)
-=======
-import Book from '../model/book.model.js';
->>>>>>> 20a69a4 (Fix import paths in controllers and routes; update to use .js extension)
+import Book from "../model/book.model.js";
 
 const addBook = async (req, res) => {
-    const { title, author, publishedDate, price } = req.body;
+    try {
+        const { title, author, publishedDate, price } = req.body;
 
-    if (!title || !author || !publishedDate || !price) {
-        return res.status(400).json({ message: "All fields are required" });
+        if (!title || !author || !publishedDate || !price) {
+            return res.status(400).json({
+                message: "All fields are required",
+            });
+        }
+
+        const book = await Book.create({
+            title,
+            author,
+            publishedDate,
+            price,
+        });
+
+        return res.status(201).json({
+            message: "Book added successfully",
+            book,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+        });
     }
-
-    const book = await Book.create({
-        title,
-        author,
-        publishedDate,
-        price
-    });
-
-    if (!book) {
-        return res.status(500).json({ message: "Something went wrong" });
-    }
-
-    return res.status(201).json({ message: "Book added successfully", book });
-}
-
+};
 
 const editBook = async (req, res) => {
-    const { id } = req.params;
-    const { title, author, publishedDate, price } = req.body;
+    try {
+        const { id } = req.params;
+        const { title, author, publishedDate, price } = req.body;
 
-    if (!title || !author || !publishedDate || !price) {
-        return res.status(400).json({ message: "All fields are required" });
-    }
+        const book = await Book.findByIdAndUpdate(
+            id,
+            {
+                title,
+                author,
+                publishedDate,
+                price,
+            },
+            { new: true }
+        );
 
-    const result = await Book.update({
-        title,
-        author,
-        publishedDate,
-        price
-    }, {
-        where: {
-            id
+        if (!book) {
+            return res.status(404).json({
+                message: "Book not found",
+            });
         }
-    });
 
-    if (!result) {
-        return res.status(500).json({ message: "Something went wrong" });
+        return res.status(200).json({
+            message: "Book updated successfully",
+            book,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+        });
     }
-
-    return res.status(200).json({ message: "Book updated successfully" });
-
-}
+};
 
 const deleteBook = async (req, res) => {
-    const { id } = req.params;
+    try {
+        const { id } = req.params;
 
-    const result = await Book.delete({
-        id
-    });
+        const book = await Book.findByIdAndDelete(id);
 
-    if (!result) {
-        return res.status(500).json({ message: "Something went wrong" });
+        if (!book) {
+            return res.status(404).json({
+                message: "Book not found",
+            });
+        }
+
+        return res.status(200).json({
+            message: "Book deleted successfully",
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+        });
     }
-
-    return res.status(200).json({ message: "Book deleted successfully" });
-
-}
+};
 
 const getAllBooks = async (req, res) => {
-    const books = await Book.findAll();
+    try {
+        const books = await Book.find();
 
-    if (!books) {
-        return res.status(500).json({ message: "Something went wrong" });
+        return res.status(200).json({
+            books,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+        });
     }
+};
 
-    return res.status(200).json({ books });         
-
-}
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-export  {
-=======
-
-<<<<<<< HEAD
-export default {
->>>>>>> 6198316 (Implement user and book routes with JWT authentication; add user registration and login functionality)
-=======
-export  {
->>>>>>> 20a69a4 (Fix import paths in controllers and routes; update to use .js extension)
+export {
     addBook,
     editBook,
     deleteBook,
-    getAllBooks
-}
-<<<<<<< HEAD
-=======
->>>>>>> 3abe013 (Add book model and controller with CRUD operations)
-=======
->>>>>>> 6198316 (Implement user and book routes with JWT authentication; add user registration and login functionality)
+    getAllBooks,
+};
