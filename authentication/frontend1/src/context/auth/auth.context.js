@@ -1,11 +1,12 @@
 'use client';
 
 import { createContext, useState, useEffect } from "react";
+import { useContext } from "react";
+import axios from "axios"; // fix: axios was used but never imported
 
 const initialState = {
   user: null,
   isAuthenticated: false,
-  error: null,
   token: null,
   refreshToken: null,
   expiresAt: null,
@@ -15,6 +16,13 @@ export const AuthContext = createContext(initialState);
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(initialState);
+
+  const axiosInstance = axios.create({
+    baseURL: 'http://localhost:5000/api/user/register',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
   const login = (data) => {
     // data = { user, token, refreshToken, expiresAt }
@@ -49,4 +57,8 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
+};
+
+export const useAuth = () => {
+  return useContext(AuthContext);
 };

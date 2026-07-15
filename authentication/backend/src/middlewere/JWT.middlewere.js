@@ -10,7 +10,7 @@ const JWT_MID = (req, res, next) => {
             });
         }
 
-        const validation = jwt.verify(token, SECRET);
+        const validation = jwt.verify(token, process.env.JWT_SECRET);
 
         req.user = validation;
         next();

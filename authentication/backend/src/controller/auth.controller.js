@@ -4,7 +4,8 @@ import jwt from "jsonwebtoken";
 
 const registerUser = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        // fix: model field is userName, not name
+        const { userName, email, password } = req.body;
 
         const existingUser = await User.findOne({ email });
 
@@ -17,7 +18,7 @@ const registerUser = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const user = new User({
-            name,
+            userName,
             email,
             password: hashedPassword,
         });

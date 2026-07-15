@@ -12,7 +12,7 @@ const bookSchema = new mongoose.Schema(
         },
         description: {
             type: String,
-            required: true,
+            required: false,  // fix: was required but addBook never sends it
         },
         price: {
             type: Number,

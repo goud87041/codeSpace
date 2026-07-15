@@ -13,7 +13,8 @@ router.route("/register").post(registerUser);
 
 router.route("/login").post(userLogin);
 
-router.route("/:userId").post(JWT_MID, getUserProfile);
+// fix: profile route should be GET not POST
+router.route("/:userId").get(JWT_MID, getUserProfile);
 
 export default router;
 
