@@ -32,7 +32,6 @@ export default function Register() {
         }
 
         try {
-            // fix: actually call the backend register API
             const response = await fetch("http://localhost:5000/api/user/register", {
                 method: "POST",
                 headers: {

@@ -2,7 +2,7 @@
 
 import { createContext, useState, useEffect } from "react";
 import { useContext } from "react";
-import axios from "axios"; // fix: axios was used but never imported
+import axios from "axios";
 
 const initialState = {
   user: null,
@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(initialState);
 
   const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5000/api/user/register',
+    baseURL: 'http://localhost:5000/api/user',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -45,7 +45,6 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      // TODO: validate/decode token, fetch user, or just trust it and set state
       setAuth((prev) => ({ ...prev, token, isAuthenticated: true, isLoading: false }));
     } else {
       setAuth((prev) => ({ ...prev, isLoading: false }));

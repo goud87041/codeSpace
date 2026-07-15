@@ -19,7 +19,6 @@ export default function Login() {
         setIsLoading(true);
         setError("");
         try {
-            // fix: correct API path, add Content-Type header
             const response = await fetch("http://localhost:5000/api/user/login", {
                 method: "POST",
                 headers: {
@@ -30,14 +29,12 @@ export default function Login() {
 
             const data = await response.json();
 
-            // fix: handle non-2xx responses
             if (!response.ok) {
                 setError(data.message || "Login failed");
                 toast.error(data.message || "Login failed");
                 return;
             }
 
-            // fix: save token via auth context and redirect
             login({ token: data.token });
             toast.success("Logged in successfully");
             router.push("/");
