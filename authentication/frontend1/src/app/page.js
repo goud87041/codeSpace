@@ -1,9 +1,22 @@
-import Image from "next/image";
+'use client';
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/auth/auth.context";
 
 export default function Home() {
-  return (
-   <>
-   <h1>Hello World</h1>
-   </>
-  );
+  const { isAuthenticated, isLoading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isLoading) return;
+
+    if (isAuthenticated) {
+      router.push("/books/all_books");
+    } else {
+      router.push("/user/login");
+    }
+  }, [isLoading, isAuthenticated, router]);
+
+  return <p>Loading...</p>;
 }

@@ -2,7 +2,6 @@
 
 import { createContext, useState, useEffect } from "react";
 import { useContext } from "react";
-import axios from "axios";
 
 const initialState = {
   user: null,
@@ -10,19 +9,13 @@ const initialState = {
   token: null,
   refreshToken: null,
   expiresAt: null,
+  isLoading: true,
 };
 
 export const AuthContext = createContext(initialState);
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(initialState);
-
-  const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5000/api/user',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
 
   const login = (data) => {
     // data = { user, token, refreshToken, expiresAt }
