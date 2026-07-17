@@ -32,7 +32,7 @@ export default function Register() {
         }
 
         try {
-            const response = await fetch("http://localhost:5000/api/user/register", {
+            const response = await fetch("http://localhost:8080/api/user/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -80,6 +80,7 @@ export default function Register() {
                 <button type="submit" disabled={isLoading}>
                     {isLoading ? "Registering..." : "Register"}
                 </button>
+                <button onClick = {()=>router.push('/user/login')}>login</button>
             </form>
         </div>
     );

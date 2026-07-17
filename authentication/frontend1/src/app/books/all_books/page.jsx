@@ -10,8 +10,9 @@ export default function AllBooks() {
 
   const featchAllBook = async ()=>{
     const res = await axios.get(
-      `${API}`
+      `${API}/allBooks`
     )
+    setAllBook(res.data)
   }
 
   return (
