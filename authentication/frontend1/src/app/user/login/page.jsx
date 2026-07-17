@@ -3,6 +3,8 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { useAuth } from "@/context/auth/auth.context";
 import { useRouter } from "next/navigation";
+// import API from "../../../api/api.js"
+import axios from "axios"   
 
 export default function Login() {
 
@@ -19,33 +21,28 @@ export default function Login() {
         setIsLoading(true);
         setError("");
         try {
-            const response = await fetch("http://localhost:5000/api/user/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ email, password }),
+            const response = await axios.post("http://localhost:8080/api/user/login", {
+                email,
+                password,
             });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                setError(data.message || "Login failed");
-                toast.error(data.message || "Login failed");
-                return;
-            }
+            const data = response.data;
 
             login({ token: data.token });
             toast.success("Logged in successfully");
             router.push("/");
 
         } catch (error) {
-            setError(error.message);
-            toast.error(error.message);
+            const message = error.response?.data?.message || error.message;
+            setError(message);
+            toast.error(message);
         } finally {
             setIsLoading(false);
         }
     };
+
+    const handleClick = ()=>{
+        router.push("/user/regiter")
+    }
 
     return (
         <>
@@ -68,6 +65,7 @@ export default function Login() {
                 <button type="submit" disabled={isLoading}>
                     {isLoading ? "Loading..." : "Login"}
                 </button>
+                <button onClick = {handleClick}>register</button>
                 {error && <p style={{ color: "red" }}>{error}</p>}
             </form>
         </>
