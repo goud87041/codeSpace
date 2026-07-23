@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/user", userRoute);
-app.use("/api/book", bookRoute);
+app.use("/api/books", bookRoute);
 app.use("/api/health", healthRoute);
 
 export default app;
