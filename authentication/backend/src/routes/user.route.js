@@ -5,6 +5,13 @@ import {
     getUserProfile,
 } from "../controller/auth.controller.js";
 
+import {
+    addUser,
+    removeUser,
+    editUser,
+    allUser
+} from "../controller/user.controller.js";
+
 import JWT_MID from "../middlewere/JWT.middlewere.js";
 
 const router = Router();
@@ -15,6 +22,11 @@ router.route("/login").post(userLogin);
 
 // fix: profile route should be GET not POST
 router.route("/:userId").get(JWT_MID, getUserProfile);
+
+router.route("/addUser").post(JWT_MID, addUser);
+router.route("/removeUser/:id").delete(JWT_MID, removeUser);
+router.route("/editUser/:id").patch(JWT_MID, editUser);
+router.route("/allUser").get(JWT_MID, allUser);
 
 export default router;
 

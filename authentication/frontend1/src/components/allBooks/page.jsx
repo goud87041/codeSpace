@@ -1,5 +1,39 @@
+import API from "@/api/api";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 function AllBooksCompo({ data }) {
+    const router = useRouter();
+    const handleClick = async (whichFunction, id) => {
+
+        if (whichFunction === "edit") {
+            router.push(`/books/editBook/${id}`);
+        }
+        else if (whichFunction === "delete") {
+            await axios.delete(`${API}/books/deleteBook/${id}`,
+                {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem("token")}`
+                    }
+                }
+            );
+            router.refresh();
+        }
+        else if (whichFunction === "assign") {
+            await axios.patch(`${API}/books/assignBook/${id}`,
+                {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem("token")}`
+                    }
+                }
+            );
+            router.refresh();
+        }
+
+    }
+
+
+
     return (
         <div className="group bg-slate-800/50 backdrop-blur-sm border border-slate-700/60 rounded-xl p-5 flex flex-col gap-3 hover:border-blue-500/40 hover:bg-slate-800/80 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300">
 
@@ -62,6 +96,7 @@ function AllBooksCompo({ data }) {
                     {/* Delete Button */}
                     <button
                         type="button"
+                        onClick={() => handleClick("delete", data._id)}
                         className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-rose-400 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 hover:border-rose-500/50 rounded-lg transition-all duration-200"
                     >
                         🗑️ Delete
