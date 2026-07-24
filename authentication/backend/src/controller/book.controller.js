@@ -2,9 +2,9 @@ import Book from "../model/book.model.js";
 
 const addBook = async (req, res) => {
     try {
-        const { title, author, publishedDate, price } = req.body;
+        const { title, author, publishedDate, price, description } = req.body;
 
-        if (!title || !author || !publishedDate || !price) {
+        if (!title || !author || !price || !description) {
             return res.status(400).json({
                 message: "All fields are required",
             });
@@ -15,6 +15,7 @@ const addBook = async (req, res) => {
             author,
             publishedDate,
             price,
+            description
         });
 
         return res.status(201).json({
@@ -31,7 +32,7 @@ const addBook = async (req, res) => {
 const editBook = async (req, res) => {
     try {
         const { id } = req.params;
-        const { title, author, publishedDate, price } = req.body;
+        const { title, author, publishedDate, price, description } = req.body;
 
         const book = await Book.findByIdAndUpdate(
             id,
@@ -40,6 +41,7 @@ const editBook = async (req, res) => {
                 author,
                 publishedDate,
                 price,
+                description
             },
             { new: true }
         );
