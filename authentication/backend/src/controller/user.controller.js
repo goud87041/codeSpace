@@ -54,14 +54,13 @@ const editUser = async (req, res) => {
     }
 }
 
-const allUser = async () => {
-    const res = await User.find();
+const allUser = async (req, res) => {
+    try {
+        const users = await User.find().select("-password");
 
-    if (res) {
-        return res.status(200).json({ message: "user found successfully", data: res });
-    }
-    else {
-        return res.status(500).json({ message: "user not found" });
+        return res.status(200).json({ message: "Users fetched successfully", data: users });
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
     }
 }
 

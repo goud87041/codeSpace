@@ -64,7 +64,18 @@ const userLogin = async (req, res) => {
             { expiresIn: "1d" }
         );
 
-        res.json({ token });
+        const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
+
+        res.json({
+            token,
+            expiresAt,
+            user: {
+                id: user._id,
+                userName: user.userName,
+                email: user.email,
+                role: user.role,
+            },
+        });
     } catch (error) {
         res.status(500).json({
             message: error.message,

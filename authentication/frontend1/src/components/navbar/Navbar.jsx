@@ -34,7 +34,7 @@ export default function Navbar() {
                 {/* Navigation Tabs */}
                 <nav className="hidden md:flex items-center gap-1">
                     <a
-                        onClick={() => router.push("/books/addBook")}
+                        onClick={() => router.push("/books/addbook")}
                         className="cursor-pointer px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-700/60 rounded-md transition-colors"
                     >
                         Add Book
@@ -44,12 +44,6 @@ export default function Navbar() {
                         className="cursor-pointer px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-700/60 rounded-md transition-colors"
                     >
                         All Books
-                    </a>
-                    <a
-                        onClick={() => router.push("/books/all_assign_books")}
-                        className="cursor-pointer px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-700/60 rounded-md transition-colors"
-                    >
-                        All Assign Books
                     </a>
 
                     <a

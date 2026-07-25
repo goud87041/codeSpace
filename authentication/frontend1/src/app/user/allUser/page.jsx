@@ -2,6 +2,7 @@
 
 import AllUsers from "@/components/allUser/page";
 import axios from "axios";
+import API from "@/api/api";
 import { useEffect, useState } from "react";
 
 
@@ -11,14 +12,21 @@ const AllUserPage = () => {
 
     useEffect(() => {
         const featchData = async () => {
-            const res = await axios.get(`http://localhost:3000/api/user/allUser`)
+            try {
+                const res = await axios.get(`${API}/user/allUser`, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                });
 
-            console.log(res.data.data)
-            setData(res.data.data)
-        }
+                setData(res.data.data || []);
+            } catch (error) {
+                console.error(error);
+            }
+        };
 
         featchData();
-    }, [])
+    }, []);
 
     return (
         <main>

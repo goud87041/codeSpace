@@ -10,20 +10,24 @@ function AllBooksCompo({ data }) {
             router.push(`/books/editBook/${id}`);
         }
         else if (whichFunction === "delete") {
-            await axios.delete(`${API}/books/deleteBook/${id}`,
+            await axios.post(
+                `${API}/books/deleteBook/${id}`,
+                null,
                 {
                     headers: {
-                        authorization: `Bearer ${localStorage.getItem("token")}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             );
             router.refresh();
         }
         else if (whichFunction === "assign") {
-            await axios.patch(`${API}/books/assignBook/${id}`,
+            await axios.patch(
+                `${API}/books/assignBook/${id}`,
+                null,
                 {
                     headers: {
-                        authorization: `Bearer ${localStorage.getItem("token")}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             );
@@ -68,6 +72,7 @@ function AllBooksCompo({ data }) {
                 <div>
                     <button
                         type="button"
+                        onClick={() => handleClick("assign", data._id)}
                         className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-violet-400 bg-violet-500/10 hover:bg-violet-500/20 border border-violet-500/30 hover:border-violet-500/60 rounded-lg transition-all duration-200"
                     >
                         📌 Assign
@@ -88,6 +93,7 @@ function AllBooksCompo({ data }) {
                     {/* Edit Button */}
                     <button
                         type="button"
+                        onClick={() => handleClick("edit", data._id)}
                         className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-300 bg-slate-700/60 hover:bg-slate-600 border border-slate-600 hover:border-slate-500 rounded-lg transition-all duration-200"
                     >
                         ✏️ Edit

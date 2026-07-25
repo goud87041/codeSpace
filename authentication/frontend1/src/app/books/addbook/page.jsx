@@ -18,7 +18,7 @@ export default function AddBook() {
         description: ""
     })
 
-    const { isLoading, startLoading, stopLoading } = useLoader();
+    const {  startLoading, stopLoading } = useLoader();
     // const token = localStorage.getItem("token");
 
     const handleChange = (e) => {
