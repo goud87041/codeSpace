@@ -2,12 +2,12 @@ import API from "@/api/api";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-function AllBooksCompo({ data }) {
+function AllBooksCompo({ data , allBookData}) {
     const router = useRouter();
     const handleClick = async (whichFunction, id) => {
 
         if (whichFunction === "edit") {
-            router.push(`/books/editBook/${id}`);
+            router.push(`/books/editBook/${data._id}`);
         }
         else if (whichFunction === "delete") {
             await axios.post(
@@ -19,7 +19,9 @@ function AllBooksCompo({ data }) {
                     }
                 }
             );
-            router.refresh();
+        
+
+            allBookData()
         }
         else if (whichFunction === "assign") {
             await axios.patch(
