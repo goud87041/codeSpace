@@ -1,4 +1,6 @@
-import User from "../model/user.model.js";
+// import User from "../model/user.model.js";
+
+import AssignUser from "../model/assignUser.model.js";
 
 
 const addUser = async (req, res) => {
@@ -8,7 +10,7 @@ const addUser = async (req, res) => {
         return res.status(400).json({ message: "All fields are required" });
     }
 
-    const response = await User.create({ userName, email, role });
+    const response = await AssignUser.create({ userName, email, role });
 
     if (response) {
         return res.status(201).json({ message: "user added successfully" });
@@ -26,7 +28,7 @@ const removeUser = async (req, res) => {
         return res.status(400).json({ message: "user id is required" });
     }
 
-    const response = await User.deleteOne({ _id: id });
+    const response = await AssignUser.deleteOne({ _id: id });
 
     if (response) {
         return res.status(200).json({ message: "user removed successfully" });
@@ -44,7 +46,7 @@ const editUser = async (req, res) => {
         return res.status(400).json({ message: "user id is required" });
     }
 
-    const response = await User.updateOne({ _id: id }, { userName, email });
+    const response = await AssignUser.updateOne({ _id: id }, { userName, email });
 
     if (response) {
         return res.status(200).json({ message: "user edited successfully" });
@@ -57,7 +59,7 @@ const editUser = async (req, res) => {
 const allUser = async (req, res) => {
     try {
         // const users = await User.find({ role: "user" }).select("-password");
-        const allUsersRaw = await User.find({}); 
+        const allUsersRaw = await AssignUser.find({}); 
 console.log(allUsersRaw.map(u => u.role));
         
 

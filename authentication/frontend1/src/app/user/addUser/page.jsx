@@ -15,16 +15,15 @@ export default function AddUserPage() {
     role: 'user',
   });
 
-  const handleSubmit = async ()=>{
-   
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     try {
-       const res =  await axios.post(`${API}/user/addUser`,form,
+       const res =  await axios.post(`${API}/assignUser/addUser`, form,
             {
                  headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
                     },
-            
         })
 
         console.log(res);
@@ -53,7 +52,7 @@ export default function AddUserPage() {
         </div>
 
         <div className="bg-slate-800/40 border border-slate-700/60 rounded-2xl p-6">
-          <form onSubmit={()=>handleSubmit()} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
 
             <div>
               <label htmlFor="userName" className="block text-sm font-medium text-slate-300 mb-1">Full Name <span className="text-rose-400">*</span></label>

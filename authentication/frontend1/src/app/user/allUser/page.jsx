@@ -12,7 +12,7 @@ const AllUserPage = () => {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get(`${API}/user/allUser`, {
+            const res = await axios.get(`${API}/assignUser/allUser`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
