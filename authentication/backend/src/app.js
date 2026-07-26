@@ -15,10 +15,10 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to the backend connection API!" });
 });
 
+app.use("/api/assignUser", AssignUserRoute)
 app.use("/api/user", userRoute);
 app.use("/api/books", bookRoute);
 app.use("/api/health", healthRoute);
-app.use("/api/assignUser", AssignUserRoute)
 
 export default app;
 

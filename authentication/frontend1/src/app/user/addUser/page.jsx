@@ -19,7 +19,7 @@ export default function AddUserPage() {
     e.preventDefault();
 
     try {
-       const res =  await axios.post(`${API}/assignUser/addUser`, form,
+       const res =  await axios.post(`${API}/assignUser/addAssignUser`, form,
             {
                  headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
