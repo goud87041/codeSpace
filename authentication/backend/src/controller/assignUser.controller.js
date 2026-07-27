@@ -1,5 +1,6 @@
 import User from "../model/user.model.js";
 import Book from "../model/book.model.js";
+import AssignUser from "../model/assignUser.model.js";
 
 const assignToUser = async (req, res) => {
     try {
@@ -63,6 +64,7 @@ const removeAssignedUser = async (req, res) => {
         if (!bookId || !userId) {
             return res.status(400).json({ message: "Book ID and User ID are required" });
         }
+        const bookId = id;
 
         // fix: unset the user field on the book instead of deleting the book document
         const book = await Book.findOneAndUpdate(

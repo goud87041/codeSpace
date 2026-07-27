@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useLoader } from "@/context/loader/loader.contex";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import API from "@/api/api";
 
 export default function Register() {
 
@@ -32,7 +33,7 @@ export default function Register() {
         }
 
         try {
-            const response = await fetch("http://localhost:8080/api/user/register", {
+            const response = await fetch(`${API}/user/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

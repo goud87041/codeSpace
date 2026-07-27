@@ -37,7 +37,7 @@ export default function Home() {
               Browse Catalog
             </a>
             <a
-              onClick={() => router.push("/books/addBook")}
+              onClick={() => router.push("/books/addbook")}
               className="cursor-pointer px-6 py-3 text-base font-medium rounded-lg text-slate-200 bg-slate-800/80 hover:bg-slate-700 border border-slate-600 backdrop-blur-sm transition-all duration-200"
             >
               + Add New Book

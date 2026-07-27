@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react'
-import axios from "axios"
+import axios, { all } from "axios"
 import API from "../../../api/api.js"
 import AllBooksCompo from '@/components/allBooks/page.jsx';
 

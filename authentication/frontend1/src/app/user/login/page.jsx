@@ -3,7 +3,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { useAuth } from "@/context/auth/auth.context";
 import { useRouter } from "next/navigation";
-// import API from "../../../api/api.js"
+import API from "@/api/api";
 import axios from "axios"
 
 export default function Login() {
@@ -21,7 +21,7 @@ export default function Login() {
         setIsLoading(true);
         setError("");
         try {
-            const response = await axios.post("http://localhost:8080/api/user/login", {
+            const response = await axios.post(`${API}/user/login`, {
                 email,
                 password,
             });
