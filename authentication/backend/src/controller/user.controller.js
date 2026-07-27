@@ -54,11 +54,11 @@ const editUser = async (req, res) => {
     }
 }
 
-const allUser = async () => {
-    const res = await User.find();
+const allUser = async (req, res) => {
+    const users = await User.find();
 
-    if (res) {
-        return res.status(200).json({ message: "user found successfully", data: res });
+    if (users) {
+        return res.status(200).json({ message: "user found successfully", data: users });
     }
     else {
         return res.status(500).json({ message: "user not found" });

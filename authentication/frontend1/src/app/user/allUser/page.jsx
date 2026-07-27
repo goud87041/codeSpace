@@ -11,7 +11,11 @@ const AllUserPage = () => {
 
     useEffect(() => {
         const featchData = async () => {
-            const res = await axios.get(`http://localhost:3000/api/user/allUser`)
+            const res = await axios.get(`http://localhost:8080/api/user/allUser`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
 
             console.log(res.data.data)
             setData(res.data.data)

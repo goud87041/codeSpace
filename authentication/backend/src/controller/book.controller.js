@@ -66,8 +66,12 @@ const editBook = async (req, res) => {
 const deleteBook = async (req, res) => {
     try {
         const { id } = req.params;
+        console.log(id);
+
 
         const book = await Book.findByIdAndDelete(id);
+        console.log(book);
+
 
         if (!book) {
             return res.status(404).json({

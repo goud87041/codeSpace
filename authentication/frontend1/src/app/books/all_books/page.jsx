@@ -16,8 +16,13 @@ export default function AllBooks() {
     setAllBook(res.data.books || res.data.data || res.data)
   }
 
+  const onAnyChange = () => {
+    setAllBook([...allBook, {}])
+  }
+
   useEffect(() => {
     featchAllBook()
+    onAnyChange()
   }, [])
 
   return (
@@ -68,7 +73,7 @@ export default function AllBooks() {
           /* Book Grid */
           <div className="grid grid-cols-1  gap-5">
             {allBook.map((item) => (
-              <AllBooksCompo key={item._id} data={item} />
+              <AllBooksCompo key={item._id} data={item} onAnyChange={featchAllBook} />
             ))}
           </div>
         )}

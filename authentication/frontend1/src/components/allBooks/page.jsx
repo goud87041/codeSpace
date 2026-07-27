@@ -1,13 +1,14 @@
 import API from "@/api/api";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-function AllBooksCompo({ data }) {
+function AllBooksCompo({ data, onAnyChange }) {
     const router = useRouter();
     const handleClick = async (whichFunction, id) => {
 
         if (whichFunction === "edit") {
-            router.push(`/books/editBook/${id}`);
+            router.delete(`/books/editBook/${id}`);
         }
         else if (whichFunction === "delete") {
             await axios.delete(`${API}/books/deleteBook/${id}`,
@@ -17,7 +18,7 @@ function AllBooksCompo({ data }) {
                     }
                 }
             );
-            router.refresh();
+            onAnyChange(id)
         }
         else if (whichFunction === "assign") {
             await axios.patch(`${API}/books/assignBook/${id}`,
@@ -31,6 +32,8 @@ function AllBooksCompo({ data }) {
         }
 
     }
+
+
 
 
 
