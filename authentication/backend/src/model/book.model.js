@@ -25,7 +25,8 @@ const bookSchema = new mongoose.Schema(
         assign: {
             type: Boolean,
             default: false
-        }
+        },
+
     },
     {
         timestamps: true,

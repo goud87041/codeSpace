@@ -4,6 +4,7 @@ import cors from "cors";
 import userRoute from "./routes/user.route.js";
 import bookRoute from "./routes/book.route.js";
 import healthRoute from "./routes/health.route.js";
+import AssignUserRoute from "./routes/assignUser.route.js"
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to the backend connection API!" });
 });
 
+app.use("/api/assignUser", AssignUserRoute)
 app.use("/api/user", userRoute);
 app.use("/api/books", bookRoute);
 app.use("/api/health", healthRoute);
