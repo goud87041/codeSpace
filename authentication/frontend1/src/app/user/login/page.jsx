@@ -42,7 +42,7 @@ export default function Login() {
     };
 
     const handleClick = () => {
-        router.push("/user/regiter")
+        router.push("/user/register")
     }
 
     return (
@@ -106,7 +106,7 @@ export default function Login() {
 
                 <div className="mt-6 text-center border-t border-slate-700/60 pt-6">
                     <p className="text-slate-400 text-sm">
-                        Don't have an account?{" "}
+                        Don&apos;t have an account?{" "}
                         <button
                             onClick={handleClick}
                             className="text-blue-400 hover:text-blue-300 font-semibold focus:outline-none hover:underline transition-all"

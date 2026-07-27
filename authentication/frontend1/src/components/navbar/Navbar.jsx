@@ -13,7 +13,7 @@ export default function Navbar() {
         if (route === "login") {
             router.push("/user/login");
         } else if (route === "register") {
-            router.push("/user/regiter");
+            router.push("/user/register");
         } else if (route === "logout") {
             logout();
             router.push("/user/login");
@@ -36,7 +36,7 @@ export default function Navbar() {
                 {/* Navigation Tabs (desktop) */}
                 <nav className="hidden md:flex items-center gap-1">
                     <a
-                        onClick={() => router.push("/books/addbook")}
+                        onClick={() => router.push("/books/addBook")}
                         className="cursor-pointer px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-700/60 rounded-md transition-colors"
                     >
                         Add Book
@@ -85,7 +85,7 @@ export default function Navbar() {
                 {open && (
                     <div className="absolute top-full left-0 right-0 bg-slate-800/95 border-t border-slate-700/60 md:hidden">
                         <div className="flex flex-col px-4 py-3 gap-1">
-                            <button onClick={() => { setOpen(false); router.push('/books/addbook') }} className="text-left px-3 py-2 rounded-md text-slate-300 hover:text-white hover:bg-slate-700/40">Add Book</button>
+                            <button onClick={() => { setOpen(false); router.push('/books/addBook') }} className="text-left px-3 py-2 rounded-md text-slate-300 hover:text-white hover:bg-slate-700/40">Add Book</button>
                             <button onClick={() => { setOpen(false); router.push('/books/all_books') }} className="text-left px-3 py-2 rounded-md text-slate-300 hover:text-white hover:bg-slate-700/40">All Books</button>
                             <button onClick={() => { setOpen(false); router.push('/user/allUser') }} className="text-left px-3 py-2 rounded-md text-slate-300 hover:text-white hover:bg-slate-700/40">All User</button>
                         </div>

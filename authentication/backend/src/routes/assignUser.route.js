@@ -3,7 +3,7 @@ import {
     assignToUser, getAssignedUsers, removeAssignedUser
 } from "../controller/assignUser.controller.js";
 
-import JWT_MID from "../middlewere/JWT.middlewere.js";
+import JWT_MID from "../middleware/JWT.middleware.js";
 
 const router = Router();
 

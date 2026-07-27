@@ -2,6 +2,7 @@
 
 import AllUsers from "@/components/allUser/page";
 import axios from "axios";
+import { toast } from "react-toastify";
 import API from "@/api/api";
 import { useEffect, useState } from "react";
 
@@ -18,7 +19,6 @@ const AllUserPage = () => {
                 },
             });
 
-            console.log('AllUser API response:', res.data);
             const payload = res.data?.data ?? res.data;
             if (Array.isArray(payload)) setData(payload);
             else if (payload) setData([payload]);
@@ -28,26 +28,29 @@ const AllUserPage = () => {
         }
     };
 
-    useEffect(() => {
-        const featchData = async () => {
-            const res = await axios.get(`http://localhost:8080/api/user/allUser`, {
+    const removeUser = async (id) => {
+        try {
+            await axios.delete(`${API}/assignUser/removeUser/${id}`, {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-            })
-
-            console.log(res.data.data)
-            setData(res.data.data)
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            });
+            toast.success("User removed successfully");
+            fetchData();
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Failed to remove user");
         }
+    };
 
-        featchData();
+    useEffect(() => {
+        fetchData();
     }, [])
 
     return (
         <main>
             <div className="max-w-7xl mx-auto px-4 py-6">
                 <div className="mb-4 text-slate-300">Showing <span className="font-medium text-white">{data.length}</span> user{data.length !== 1 ? 's' : ''}</div>
-                <AllUsers users={data} />
+                <AllUsers users={data} onDelete={removeUser} />
             </div>
         </main>
     );

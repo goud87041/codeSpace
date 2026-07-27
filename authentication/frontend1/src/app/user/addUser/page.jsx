@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import API from '@/api/api';
 
 
@@ -19,21 +20,17 @@ export default function AddUserPage() {
     e.preventDefault();
 
     try {
-       const res =  await axios.post(`${API}/assignUser/addAssignUser`, form,
+        await axios.post(`${API}/assignUser/addAssignUser`, form,
             {
                  headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
                     },
         })
 
-        console.log(res);
-        
-        if(!res){
-            console.log('field to save user')
-        }   
+        toast.success('User added successfully');
         router.push("/user/allUser")
     } catch (error) {
-        console.log("something went wrong to add user")
+        toast.error(error.response?.data?.message || "Failed to add user");
     }
 
 
