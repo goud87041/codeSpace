@@ -4,6 +4,7 @@ import axios, { all } from "axios"
 import API from "../../../api/api.js"
 import AllBooksCompo from '@/components/allBooks/page.jsx';
 
+
 export default function AllBooks() {
 
   const [allBook, setAllBook] = useState([])
@@ -16,13 +17,8 @@ export default function AllBooks() {
     setAllBook(res.data.books || res.data.data || res.data)
   }
 
-  const onAnyChange = () => {
-    setAllBook([...allBook, {}])
-  }
-
   useEffect(() => {
     featchAllBook()
-    onAnyChange()
   }, [])
 
   return (
