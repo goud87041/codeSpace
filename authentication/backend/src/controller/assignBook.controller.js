@@ -1,4 +1,4 @@
-import User from "../model/user.model.js";
+import AssignUser from "../model/assignUser.model.js";
 import Book from "../model/book.model.js";
 
 const assignToUser = async (req, res) => {
@@ -17,7 +17,7 @@ const assignToUser = async (req, res) => {
             return res.status(400).json({ message: "Book has already been assigned" });
         }
 
-        const resultUser = await User.findById(userId);
+        const resultUser = await AssignUser.findById(userId);
         if (!resultUser) {
             return res.status(404).json({ message: "No user found" });
         }

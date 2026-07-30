@@ -20,7 +20,7 @@ const bookSchema = new mongoose.Schema(
         },
         user: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
+            ref: "AssignUser",
         },
         assign: {
             type: Boolean,

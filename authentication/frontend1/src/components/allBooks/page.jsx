@@ -25,16 +25,7 @@ function AllBooksCompo({ data , allBookData}) {
             allBookData()
         }
         else if (whichFunction === "assign") {
-            await axios.patch(
-                `${API}/books/assignBook/${id}`,
-                null,
-                {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("token")}`
-                    }
-                }
-            );
-            router.refresh();
+           router.push(`/user/assignBookToUser/${id}`)
         }
 
     }
@@ -44,7 +35,7 @@ function AllBooksCompo({ data , allBookData}) {
 
 
     return (
-        <div className="group bg-slate-800/50 backdrop-blur-sm border border-slate-700/60 rounded-xl p-5 flex flex-col gap-3 hover:border-blue-500/40 hover:bg-slate-800/80 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300">
+        <div  className="group bg-slate-800/50 backdrop-blur-sm border border-slate-700/60 rounded-xl p-5 flex flex-col gap-3 hover:border-blue-500/40 hover:bg-slate-800/80 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300">
 
             {/* Top row — title + assign badge */}
             <div className="flex items-start justify-between gap-3">
