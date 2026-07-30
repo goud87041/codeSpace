@@ -8,6 +8,19 @@ export default function AssignBooks() {
     const [allAssignBook, setAllAssignBook] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
+    const handleClick = async (id)=>{
+        await axios.delete(`${API}/books/removeAssignedUser/${id}`,
+          {  headers : 
+            {
+                Authorization : `Bearer ${localStorage.getItem("token")}`
+            }
+          }
+          
+        ).then(
+            res=>{console.log(res.data);getAllAssignBook()}
+        )
+    }
+
     const getAllAssignBook = async () => {
         try {
             const res = await axios.get(`${API}/books/allAssignBooks`, {
@@ -78,6 +91,7 @@ export default function AssignBooks() {
                                     </span>
                                     <button
                                         type="button"
+                                        onClick={() => handleClick(book._id)}
                                         className="px-3 py-1.5 text-xs font-semibold text-rose-400 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 hover:border-rose-500/50 rounded-lg transition-all duration-200"
                                     >
                                         Revoke
